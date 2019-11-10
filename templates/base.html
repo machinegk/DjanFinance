@@ -1,0 +1,153 @@
+{% load static %}
+{% load octicons %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DjanFinance</title>
+
+    <script src="{% static "js/jquery.min.js" %}"></script>
+
+    <link rel="stylesheet" href="{% static "css/bootstrap.css" %}">
+    <link rel="stylesheet" href="{% static "css/Chart.css" %}">
+    <link rel="stylesheet" href="{% static "css/bootstrap.css.map" %}">
+
+    <script src="{% static "js/bootstrap.min.js" %}"></script>
+    <script src="{% static "js/bootstrap.min.js.map" %}"></script>
+
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
+
+    <script src="{% static "js/Chart.js" %}"></script>
+    <script src="{% static "js/Chart.min.js" %}"></script>
+</head>
+<body>
+    <nav class="navbar navbar-dark navbar-expand-sm sticky-top">
+        <a class="navbar-brand mx-sm-auto" href="#">DjanFinance</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapse_target" >
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapse_target">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a href="#" class="nav-link">{% octicon "organization" %}Register</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">{% octicon "sign-in" %}Log in</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-3">
+        <div class="row">
+            <div class="alert alert-info col-12" role="alert">
+                <h4 class="alert-heading">Hello!</h4>
+                <p>Great day to start managing your finance with this beautiful budgeting app</p>
+                <hr>
+                <p class="mb-0">Press this button to join us <button type="button" class="btn btn-info">Join Now!</button></p>
+            </div>
+
+
+            <div class="col-lg-8 col-sm-12">
+                <div class="row">
+                    <canvas id="chartjs-4" class="chartjs col-lg-10 col-lg-10 order-lg-2" width="1000" height="800" style="display: block; height: 358px; width: 717px;"></canvas>
+                    <div class="alert alert-info col-lg-2 order-lg-1 align-self-lg-center" role="alert">
+                        Watch your expenses in beautiful diagrams, powered by Charts.js!
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-sm-12">
+                <div class="alert alert-success" role="alert">
+                    {% octicon "plus" %} 455 to budget
+                </div>
+                <div class="alert alert-warning" role="alert">
+                    {% octicon "dash" %} 20 to car
+                </div>
+                <div class="alert alert-success" role="alert">
+                    {% octicon "plus" %} 300 to budget
+                </div>
+                <div class="alert alert-warning" role="alert">
+                    {% octicon "dash" %} 30 to other
+                </div>
+                <div class="alert alert-success" role="alert">
+                    {% octicon "plus" %} 500 to budget
+                </div>
+                <div class="alert alert-warning" role="alert">
+                    {% octicon "dash" %} 50 to car
+                </div>
+                <div class="alert alert-success" role="alert">
+                    {% octicon "plus" %} 100 to budget
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8 col-sm-12">
+                <canvas id="chartjs-0" class="chartjs" width="1389" height="693" style="display: block; height: 347px; width: 695px;"></canvas>
+            </div>
+            <div class="col-lg-4 col-sm-12 align-self-lg-center">
+                <div class="alert alert-info" role="alert">
+                    Export charts of your incomes and expenses by period!
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-3">
+
+            <table class="table table-striped table-dark col-lg-10 table-responsive-sm rounded order-lg-2">
+              <thead>
+                <tr>
+                  <th scope="col">Date</th>
+                  <th scope="col">Amount</th>
+                  <th scope="col">Type</th>
+                  <th scope="col">Category</th>
+                  <th scope="col">Balance</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">03.11.2019</th>
+                  <td>400</td>
+                  <td>Income</td>
+                  <td>Deposite</td>
+                  <td>2250</td>
+                </tr>
+                <tr>
+                  <th scope="row">01.11.2019</th>
+                  <td>150</td>
+                  <td>Expense</td>
+                  <td>Car</td>
+                  <td>1850</td>
+                </tr>
+                <tr>
+                  <th scope="row">28.10.2019</th>
+                  <td>200</td>
+                  <td>Income</td>
+                  <td>Other</td>
+                  <td>2000</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="alert alert-info align-self-lg-center col-lg-2 order-lg-1" role="alert">
+                Track history of your money operations in log!
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+    <footer class="page-footer font-small">
+
+      <div class="footer-copyright text-center py-3">
+          © 2019 Copyright
+      </div>
+
+    </footer>
+
+
+
+    <script src="{% static "js/chart_samples.js" %}"></script>
+</body>
+</html>
