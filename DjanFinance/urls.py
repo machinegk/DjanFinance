@@ -21,6 +21,6 @@ from .views import welcome
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', welcome, name="welcome-page"),
-    path('login/', include('UsersManager.urls')),
+    path('authorisation/', include('UsersManager.urls')),
 
 ]

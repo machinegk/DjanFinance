@@ -1,9 +1,53 @@
 {% extends 'base.html' %}
-
+{% load static %}
+{% block additional_static %}
+    <link rel="stylesheet" href="{% static "css/authorization/form.css" %}">
+    <script src="{% static "js/authorization/form.js" %}"></script>
+{% endblock %}
 {% block content %}
+    <div class="container">
 
+            <div class="col-lg-6 col-sm-12 mx-auto">
+                <form method="post" novalidate>
+                    <h1>Log In</h1>
+                    {% csrf_token %}
+                    <label>
+                        <p class="label-txt">USERNAME</p>
+                        {#            <input type="text" class="input" name="{{ form.username.html_name }}">#}
+                        {{ form.username }}
+                        <div class="line-box">
+                            <div class="line"></div>
+                        </div>
+                        {% if form.username.errors %}
+                            <div class="alert alert-danger font-italic" role="alert">
+                                {{ form.username.errors }}
+                            </div>
+                        {% endif %}
+                    </label>
 
+                    <label>
+                        <p class="label-txt">PASSWORD</p>
+                        {#            <input type="password" class="input" name="{{ form.password2.html_name }}">#}
+                        {{ form.password }}
+                        <div class="line-box">
+                            <div class="line"></div>
+                        </div>
+                        {% if form.error_messages %}
+                            <div class="alert alert-danger font-italic" role="alert">
+                                {{ form.error_messages}}
+                            </div>
+                        {% endif %}
+                    </label>
+                    <button type="submit" class="align-self-center">Log In!</button>
+                </form>
+            </div>
 
-
-
+    </div>
+{% endblock %}
+{% block footer %}
+    <footer class="page-footer font-small fixed-bottom">
+        <div class="footer-copyright text-center py-3">
+            © 2019 Copyright
+        </div>
+    </footer>
 {% endblock %}

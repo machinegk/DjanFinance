@@ -46,7 +46,7 @@
                 <h4 class="alert-heading">Hello!</h4>
                 <p>Great day to start managing your finance with this beautiful budgeting app</p>
                 <hr>
-                <p class="mb-0">Press this button to join us <button type="button" class="btn btn-info">Join Now!</button></p>
+                <p class="mb-0">Press this button to join us <a href="{% url 'register-page' %}"><button type="button" class="btn btn-info">Join Now!</button></p></a>
             </div>
 
 
@@ -149,18 +149,17 @@
     </div>
 {% endblock %}
 
-
-
+{% block footer %}
     <footer class="page-footer font-small">
-
         <div class="footer-copyright text-center py-3">
             © 2019 Copyright
         </div>
-
     </footer>
-
+{% endblock %}
 
 
     <script src="{% static "js/chart_samples.js" %}"></script>
 </body>
+
+
 </html>
