@@ -62,16 +62,33 @@ new Chart(document.getElementById("chartjs-4"),
 
 new Chart(document.getElementById("chartjs-0"),{"type":"line",
     "data":{"labels":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
-        "datasets":[{"label":"budget",
+        "datasets":[{"label":"Card",
             "data":[20,30,50, 150, 30, 25,150],
             "fill":false,
             "borderColor":"rgb(75, 192, 192)",
             "lineTension":0.1},
-            {"label":"Income",
+            {"label":"Cash",
             "data":[455, 300, 500, 100, 200],
             "fill":false,
             "borderColor":"rgb(119,192,71)",
             "lineTension":0.1}
             ]},
     "options":{ legend: { labels: { fontSize: 20 } }}});
+
+new Chart(document.getElementById("chartjs-1"),
+    {"type":"bar","data":{"labels":["January","February","March","April","May","June","July"],
+            "datasets":[{"label":"INCOME",
+                "data":[5000,4250,6350,5500,6000,4000,5900],
+                "fill":false,
+                "backgroundColor":"rgb(157,255,139)",
+                "borderColor":"rgb(255, 99, 132)",
+                "borderWidth":1},
+            {"label":"EXPENSES",
+                "data":[,3760,5400,6000,4250,4500,3200],
+                "fill":false,
+                "backgroundColor":"rgba(255, 99, 132, 0.2)",
+                "borderColor":"rgb(255, 99, 132)",
+                "borderWidth":1}]},
+        "options":{"scales":
+                {"yAxes":[{"ticks":{"beginAtZero":true}}]}}});
 
