@@ -21,21 +21,25 @@
 
     <script src="{% static "js/Chart.js" %}"></script>
     <script src="{% static "js/Chart.min.js" %}"></script>
+
+    {% block additional_static %}
+    {% endblock %}
 </head>
 <body>
+
     <nav class="navbar navbar-dark navbar-expand-sm sticky-top">
-        <a class="navbar-brand mx-sm-auto" href="#">DjanFinance</a>
+        <a class="navbar-brand mx-sm-auto" href="{% url 'welcome-page' %}">DjanFinance</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapse_target" >
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="collapse_target">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item"><a href="#" class="nav-link">{% octicon "organization" %}Register</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">{% octicon "sign-in" %}Log in</a></li>
+                <li class="nav-item"><a href="{% url 'register-page' %}" class="nav-link">{% octicon "organization" %}Register</a></li>
+                <li class="nav-item"><a href="{% url 'login-page' %}" class="nav-link">{% octicon "sign-in" %}Log in</a></li>
             </ul>
         </div>
     </nav>
-
+{% block content %}
     <div class="container mt-3">
         <div class="row">
             <div class="alert alert-info col-12" role="alert">
@@ -143,15 +147,15 @@
         </div>
 
     </div>
-
+{% endblock %}
 
 
 
     <footer class="page-footer font-small">
 
-      <div class="footer-copyright text-center py-3">
-          © 2019 Copyright
-      </div>
+        <div class="footer-copyright text-center py-3">
+            © 2019 Copyright
+        </div>
 
     </footer>
 

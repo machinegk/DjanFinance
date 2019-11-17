@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block additional_static %}
+    <link rel="stylesheet" href="{% static "css/authorization/form.css" %}">
+    <script src="{% static "js/authorization/form.js" %}"></script>
+{% endblock %}
+{% block content %}
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <form method="post" novalidate>
+    {% csrf_token %}
+
+        <label>
+            <p class="label-txt">CHOOSE YOUR USERNAME</p>
+{#            <input type="text" class="input" name="{{ form.username.html_name }}">#}
+            {{ form.username }}
+            <div class="line-box">
+                <div class="line"></div>
+            </div>
+            {{ form.username.errors }}
+        </label>
+        <label>
+            <p class="label-txt">ENTER YOUR FIRST NAME</p>
+{#            <input type="text" class="input" name="{{ form.first_name.html_name }}">#}
+            {{ form.first_name }}
+            <div class="line-box">
+                <div class="line"></div>
+            </div>
+            {{ form.first_name.errors }}
+        </label>
+        <label>
+            <p class="label-txt">ENTER YOUR LAST NAME</p>
+{#            <input type="text" class="input" name="{{ form.last_name.html_name }}">#}
+            {{ form.last_name }}
+            <div class="line-box">
+                <div class="line"></div>
+            </div>
+            {{ form.last_name.errors }}
+        </label>
+        <label>
+            <p class="label-txt">ENTER YOUR EMAIL</p>
+{#            <input type="email" class="input" name="{{ form.first_name.html_name }}" >#}
+                {{ form.email }}
+            <div class="line-box">
+                <div class="line"></div>
+            </div>
+            {{ form.email.errors }}
+        </label>
+        <label>
+            <p class="label-txt">ENTER YOUR PASSWORD</p>
+{#            <input type="password" class="input" name="{{ form.password1.html_name }}">#}
+            {{ form.password1 }}
+            <div class="line-box">
+                <div class="line"></div>
+            </div>
+            {{ form.password1.errors }}
+        </label>
+        <label>
+            <p class="label-txt">CONFIRM YOUR PASSWORD</p>
+{#            <input type="password" class="input" name="{{ form.password2.html_name }}">#}
+            {{ form.password2 }}
+            <div class="line-box">
+                <div class="line"></div>
+            </div>
+            {{ form.password2.errors }}
+        </label>
+        <button type="submit">Join!</button>
+    </form>
+
+{% endblock %}
