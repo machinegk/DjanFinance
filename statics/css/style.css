@@ -2,6 +2,7 @@
     font-family: 'Courgette';
     src: url("../fonts/Courgette-Regular.ttf");
 }
+
 @font-face {
     font-family: "Noto Sans KR";
     src: url("../fonts/NotoSansKR-Regular.otf");
@@ -10,16 +11,19 @@
 .navbar {
     background-color: rebeccapurple;
 }
+
 .navbar .nav-link {
     font-family: "Noto Sans KR", sans-serif;
     font-size: large;
     color: white;
 }
+
 .navbar-brand {
     font-family: 'Courgette', coursive;
     font-size: xx-large;
     color: white;
 }
+
 .navbar-brand:hover {
     color: white;
 }
@@ -32,17 +36,25 @@
 }
 
 .octicon {
-  display: inline-block;
-  /*vertical-align: top;*/
-  fill: currentColor;
+    display: inline-block;
+    /*vertical-align: top;*/
+    fill: currentColor;
 }
 
-@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
 .alert {
-  opacity:0;
-  animation:fadeIn ease-in 1;
-  animation-fill-mode:forwards;
-  animation-duration:1s;
+    opacity: 0;
+    animation: fadeIn ease-in 1;
+    animation-fill-mode: forwards;
+    animation-duration: 1s;
 }
 
 .alert.alert-success {
@@ -50,12 +62,23 @@
 }
 
 .alert.alert-warning {
-        animation-delay: 0.4s;
+    animation-delay: 0.4s;
 
 }
+
 .table {
-  opacity:0;
-  animation:fadeIn ease-in 1;
-  animation-fill-mode:forwards;
-  animation-duration:1s;
+    opacity: 0;
+    animation: fadeIn ease-in 1;
+    animation-fill-mode: forwards;
+    animation-duration: 1s;
+}
+
+.blink {
+    animation: blinker 2.5s linear infinite;
+}
+
+@keyframes blinker {
+    50% {
+        opacity: 60%;
+    }
 }
