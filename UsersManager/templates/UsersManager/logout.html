@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block additional_static %}
+<style>
+    a{
+        color: rebeccapurple;
+    }
+    a:hover{
+        color: rebeccapurple;
+        text-decoration: none;
+    }
+</style>
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-sm-12 mx-auto mt-5">
+                <div class="alert alert-info" role="alert">
+                    <h4 class="alert-heading">You are currently logged out</h4>
+                    <p>If you want to log in again, please, press link below</p>
+                    <hr>
+                    <p class="mb-0"><a href="{% url 'login-page' %}">Log in</a> or create new <a href="{% url 'register-page' %}">account</a> </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}
+
+{% block footer %}
+    <footer class="page-footer font-small fixed-bottom">
+        <div class="footer-copyright text-center py-3">
+            © 2019 Copyright
+        </div>
+    </footer>
+{% endblock %}
