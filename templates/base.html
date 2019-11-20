@@ -34,8 +34,15 @@
         </button>
         <div class="collapse navbar-collapse" id="collapse_target">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item"><a href="{% url 'register-page' %}" class="nav-link">{% octicon "organization" %}Register</a></li>
-                <li class="nav-item"><a href="{% url 'login-page' %}" class="nav-link">{% octicon "sign-in" %}Log in</a></li>
+                {% if user.is_authenticated %}
+                    <li class="nav-item"><a href="{% url 'welcome-page' %}" class="nav-link">{% octicon "home" %}Home of {{ user.username }}</a></li>
+                    <li class="nav-item"><a href="{% url 'welcome-page' %}" class="nav-link">{% octicon "person" %}Profile</a></li>
+                    <li class="nav-item"><a href="{% url 'welcome-page' %}" class="nav-link">{% octicon "settings" %}Settings</a></li>
+                    <li class="nav-item"><a href="{% url 'logout-page' %}" class="nav-link">{% octicon "sign-out" %}Log out</a></li>
+                {% else %}
+                    <li class="nav-item"><a href="{% url 'register-page' %}" class="nav-link">{% octicon "organization" %}Register</a></li>
+                    <li class="nav-item"><a href="{% url 'login-page' %}" class="nav-link">{% octicon "sign-in" %}Log in</a></li>
+                {% endif %}
             </ul>
         </div>
     </nav>
@@ -52,7 +59,7 @@
 
             <div class="col-lg-8 col-sm-12">
                 <div class="row">
-                    <canvas id="chartjs-4" class="chartjs col-lg-10 col-lg-10 order-lg-2" width="1000" height="800" style="display: block; height: 358px; width: 717px;"></canvas>
+                    <canvas id="chartjs-4" class="chartjs col-lg-10 col-lg-10 order-lg-2" width="1200" height="800" style="display: block; height: 358px; width: 717px;"></canvas>
                     <div class="alert alert-info col-lg-2 order-lg-1 align-self-lg-center" role="alert">
                         Watch your expenses in beautiful diagrams, powered by Charts.js!
                     </div>

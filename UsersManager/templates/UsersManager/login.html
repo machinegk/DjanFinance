@@ -6,41 +6,54 @@
 {% endblock %}
 {% block content %}
     <div class="container">
-
+        {% if messages %}
             <div class="col-lg-6 col-sm-12 mx-auto">
-                <form method="post" novalidate>
-                    <h1>Log In</h1>
-                    {% csrf_token %}
-                    <label>
-                        <p class="label-txt">USERNAME</p>
-                        {#            <input type="text" class="input" name="{{ form.username.html_name }}">#}
-                        {{ form.username }}
-                        <div class="line-box">
-                            <div class="line"></div>
-                        </div>
-                        {% if form.username.errors %}
-                            <div class="alert alert-danger font-italic" role="alert">
-                                {{ form.username.errors }}
-                            </div>
-                        {% endif %}
-                    </label>
-
-                    <label>
-                        <p class="label-txt">PASSWORD</p>
-                        {#            <input type="password" class="input" name="{{ form.password2.html_name }}">#}
-                        {{ form.password }}
-                        <div class="line-box">
-                            <div class="line"></div>
-                        </div>
-                        {% if form.error_messages %}
-                            <div class="alert alert-danger font-italic" role="alert">
-                                {{ form.error_messages}}
-                            </div>
-                        {% endif %}
-                    </label>
-                    <button type="submit" class="align-self-center">Log In!</button>
-                </form>
+                <div class="alert alert-success" role="alert">
+                    {% for message in messages %}
+                        {{ message }}
+                    {% endfor %}
+                </div>
             </div>
+        {% endif %}
+        <div class="col-lg-6 col-sm-12 mx-auto">
+            <form method="post" novalidate>
+                <h1>Log In</h1>
+                {% csrf_token %}
+                <label>
+                    <p class="label-txt">USERNAME</p>
+                    {{ form.username }}
+                    <div class="line-box">
+                        <div class="line"></div>
+                    </div>
+                    {% if form.username.errors %}
+                        <div class="alert alert-danger font-italic mt-1" role="alert">
+                            {{ form.username.errors.as_text }}
+                        </div>
+                    {% endif %}
+                </label>
+
+                <label>
+                    <p class="label-txt">PASSWORD</p>
+                    {{ form.password }}
+                    <div class="line-box">
+                        <div class="line"></div>
+                    </div>
+                    {% if form.password.errors %}
+                        <div class="alert alert-danger font-italic mt-1" role="alert">
+                            {{ form.password.errors.as_text }}
+                        </div>
+                    {% endif %}
+
+                </label>
+
+                {% if form.errors %}
+                    <div class="alert alert-danger font-italic mt-1" role="alert">
+                        {{ form.errors.as_text }}
+                    </div>
+                {% endif %}
+                <button type="submit" class="align-self-center">Log In!</button>
+            </form>
+        </div>
 
     </div>
 {% endblock %}

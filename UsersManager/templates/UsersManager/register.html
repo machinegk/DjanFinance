@@ -7,91 +7,88 @@
 {% block content %}
     <div class="container">
 
-            <div class="col-lg-6 col-sm-12 mx-auto h-100">
-                <form method="post" novalidate >
-                    <h1>Register</h1>
-                    {% csrf_token %}
-                    <label>
-                        <p class="label-txt">CHOOSE YOUR USERNAME</p>
-                        {#            <input type="text" class="input" name="{{ form.username.html_name }}">#}
-                        {{ form.username }}
-                        <div class="line-box">
-                            <div class="line"></div>
+        <div class="col-lg-6 col-sm-12 mx-auto h-100 mb-3">
+            <form method="post" novalidate>
+                <h1>Register</h1>
+                {% csrf_token %}
+                <label>
+                    <p class="label-txt">CHOOSE YOUR USERNAME</p>
+                    {#            <input type="text" class="input" name="{{ form.username.html_name }}">#}
+                    {{ form.username }}
+                    <div class="line-box">
+                        <div class="line"></div>
+                    </div>
+                    {% if form.username.errors %}
+                        <div class="alert alert-danger font-italic mt-1" role="alert">
+                            {{ form.username.errors.as_text }}
                         </div>
-                        {% if form.username.errors %}
-                            <div class="alert alert-danger font-italic" role="alert">
-                                {{ form.username.errors }}
-                            </div>
-                        {% endif %}
-                    </label>
-                    <label>
-                        <p class="label-txt">ENTER YOUR FIRST NAME</p>
-                        {#            <input type="text" class="input" name="{{ form.first_name.html_name }}">#}
-                        {{ form.first_name }}
-                        <div class="line-box">
-                            <div class="line"></div>
+                    {% endif %}
+                </label>
+                <label>
+                    <p class="label-txt">ENTER YOUR FIRST NAME</p>
+                    {{ form.first_name }}
+                    <div class="line-box">
+                        <div class="line"></div>
+                    </div>
+                    {% if form.first_name.errors %}
+                        <div class="alert alert-danger font-italic mt-1" role="alert">
+                            {{ form.first_name.errors.as_text }}
                         </div>
-                        {% if form.first_name.errors %}
-                            <div class="alert alert-danger font-italic" role="alert">
-                                {{ form.first_name.errors }}
-                            </div>
-                        {% endif %}
-                    </label>
-                    <label>
-                        <p class="label-txt">ENTER YOUR LAST NAME</p>
-                        {#            <input type="text" class="input" name="{{ form.last_name.html_name }}">#}
-                        {{ form.last_name }}
-                        <div class="line-box">
-                            <div class="line"></div>
+                    {% endif %}
+                </label>
+                <label>
+                    <p class="label-txt">ENTER YOUR LAST NAME</p>
+                    {{ form.last_name }}
+                    <div class="line-box">
+                        <div class="line"></div>
+                    </div>
+                    {% if form.last_name.errors %}
+                        <div class="alert alert-danger font-italic mt-1" role="alert">
+                            {{ form.last_name.errors.as_text }}
                         </div>
-                        {% if form.last_name.errors %}
-                            <div class="alert alert-danger font-italic" role="alert">
-                                {{ form.last_name.errors }}
-                            </div>
-                        {% endif %}
-                    </label>
-                    <label>
-                        <p class="label-txt">ENTER YOUR EMAIL</p>
-                        {#            <input type="email" class="input" name="{{ form.first_name.html_name }}" >#}
-                        {{ form.email }}
-                        <div class="line-box">
-                            <div class="line"></div>
+                    {% endif %}
+                </label>
+                <label>
+                    <p class="label-txt">ENTER YOUR EMAIL</p>
+                    {{ form.email }}
+                    <div class="line-box">
+                        <div class="line"></div>
+                    </div>
+                    {% if form.email.errors %}
+                        <div class="alert alert-danger font-italic mt-1" role="alert">
+                            {{ form.email.errors.as_text }}
                         </div>
-                        {% if form.email.errors %}
-                            <div class="alert alert-danger font-italic" role="alert">
-                                {{ form.email.errors }}
-                            </div>
-                        {% endif %}
-                    </label>
-                    <label>
-                        <p class="label-txt">ENTER YOUR PASSWORD</p>
-                        {#            <input type="password" class="input" name="{{ form.password1.html_name }}">#}
-                        {{ form.password1 }}
-                        <div class="line-box">
-                            <div class="line"></div>
+                    {% endif %}
+                </label>
+                <label>
+                    <p class="label-txt">ENTER YOUR PASSWORD</p>
+                    {{ form.password1 }}
+                    <div class="line-box">
+                        <div class="line"></div>
+                    </div>
+                    {% if form.password1.errors %}
+                        <div class="alert alert-danger font-italic mt-1" role="alert">
+                            {{ form.password1.errors.as_text }}
                         </div>
-                        {% if form.password1.errors %}
-                            <div class="alert alert-danger font-italic" role="alert">
-                                {{ form.password1.errors }}
-                            </div>
-                        {% endif %}
-                    </label>
-                    <label>
-                        <p class="label-txt">CONFIRM YOUR PASSWORD</p>
-                        {#            <input type="password" class="input" name="{{ form.password2.html_name }}">#}
-                        {{ form.password2 }}
-                        <div class="line-box">
-                            <div class="line"></div>
+                    {% endif %}
+                </label>
+                <label>
+                    <p class="label-txt">CONFIRM YOUR PASSWORD</p>
+                    {{ form.password2 }}
+                    <div class="line-box">
+                        <div class="line"></div>
+                    </div>
+                    {% if form.password2.errors %}
+                        <div class="alert alert-danger font-italic mt-1" role="alert">
+                            {{ form.password2.errors.as_text }}
                         </div>
-                        {% if form.password2.errors %}
-                            <div class="alert alert-danger font-italic" role="alert">
-                                {{ form.password2.errors }}
-                            </div>
-                        {% endif %}
-                    </label>
-                    <button type="submit" class="align-self-center">Join!</button>
-                </form>
-            </div>
+                    {% endif %}
+                </label>
+
+
+                <button type="submit" class="align-self-center">Join!</button>
+            </form>
+        </div>
 
     </div>
 {% endblock %}
