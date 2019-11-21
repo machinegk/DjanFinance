@@ -1,7 +1,10 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import RegistrationForm
+from django.http import HttpResponse
 
+def settings(request):
+    return HttpResponse("Settings page")
 
 def register(request):
     if request.method == 'POST':

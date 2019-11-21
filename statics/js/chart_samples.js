@@ -48,7 +48,7 @@ new Chart(document.getElementById("chartjs-4"),
             "datasets":[{"label":"Expenses",
                 "data":[300,50,100],
                 "backgroundColor":
-                    ["rgb(255, 99, 132)","rgb(54, 162, 235)","rgb(255, 205, 86)"]}]},
+                    ["rgb(0,16,255)","rgb(235,1,0)","rgb(255,239,13)"]}]},
     "options":{ legend: { labels: { fontSize: 20 } },
                 elements: {
 				    center: {
@@ -84,7 +84,7 @@ new Chart(document.getElementById("chartjs-1"),
                 "borderColor":"rgb(255, 99, 132)",
                 "borderWidth":1},
             {"label":"EXPENSES",
-                "data":[ 4200 ,3760,5400,6000,4250,4500,3200],
+                "data":[ 4200  ,3760,5400,6000,4250,4500,3200],
                 "fill":false,
                 "backgroundColor":"rgba(255, 99, 132, 0.2)",
                 "borderColor":"rgb(255, 99, 132)",

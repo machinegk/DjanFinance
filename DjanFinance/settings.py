@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'UsersManager.apps.UsersmanagerConfig',
+    'FinanceManager.apps.FinancemanagerConfig',
     'octicons',
 
 
@@ -129,5 +130,5 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'statics'),
 ]
 
-LOGIN_REDIRECT_URL = 'welcome-page'
+LOGIN_REDIRECT_URL = 'home-page'
 LOGIN_URL = 'login-page'
