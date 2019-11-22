@@ -2,20 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5a596d89-bc52-47a1-8f3f-be1c7d98ec10" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/FinanceManager/templates/FinanceManager/home.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/css/home-page/sidebar.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/js/home-page/sidebar.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/sidebar.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DjanFinance/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/DjanFinance/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DjanFinance/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/DjanFinance/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FinanceManager/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/FinanceManager/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FinanceManager/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/FinanceManager/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UsersManager/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/UsersManager/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UsersManager/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/UsersManager/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/statics/js/chart_samples.js" beforeDir="false" afterPath="$PROJECT_DIR$/statics/js/chart_samples.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -143,7 +133,7 @@
       <workItem from="1574064651928" duration="6838000" />
       <workItem from="1574079038819" duration="3120000" />
       <workItem from="1574258817519" duration="15446000" />
-      <workItem from="1574356846974" duration="15499000" />
+      <workItem from="1574356846974" duration="18295000" />
     </task>
     <task id="LOCAL-00001" summary="add new type of chart">
       <created>1573976603209</created>
@@ -208,7 +198,14 @@
       <option name="project" value="LOCAL" />
       <updated>1574283199192</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="a lot of different things were done">
+      <created>1574378085524</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1574378085524</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -244,6 +241,7 @@
     <MESSAGE value="add login page (that doesn't work, but there are a lot of other stuff that i have to push)" />
     <MESSAGE value="added login page (that works)&#10;some customization to base page and other stuff" />
     <MESSAGE value="created new app 'FinanceManager'" />
-    <option name="LAST_COMMIT_MESSAGE" value="created new app 'FinanceManager'" />
+    <MESSAGE value="a lot of different things were done" />
+    <option name="LAST_COMMIT_MESSAGE" value="a lot of different things were done" />
   </component>
 </project>
