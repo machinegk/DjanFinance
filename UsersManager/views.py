@@ -11,7 +11,7 @@ def user_is_not_logged_in(user):
 
 @login_required()
 def settings(request):
-    return HttpResponse("Settings page")
+    return render(request, 'UsersManager/settings.html')
 
 
 @user_passes_test(user_is_not_logged_in, redirect_field_name='home-page')
