@@ -29,7 +29,8 @@
                 <div class="sidebar-header">
                     <div class="user-pic">
                         <img class="img-responsive img-rounded"
-                             src="{% static 'icons8-cat-profile-60.png' %}"
+{#                             src="{% static 'icons8-cat-profile-60.png' %}"#}
+                                src="{{ user.profile.image }}"
                              alt="User picture">
                     </div>
                     <div class="user-info">
