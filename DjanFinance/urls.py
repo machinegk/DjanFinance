@@ -18,10 +18,13 @@ from django.urls import path
 from django.urls import include
 from .views import welcome
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', welcome, name="welcome-page"),
     path('user-managing/', include('UsersManager.urls')),
     path('account/', include('FinanceManager.urls')),
 
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
