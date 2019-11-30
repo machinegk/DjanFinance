@@ -2,12 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5a596d89-bc52-47a1-8f3f-be1c7d98ec10" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/UsersManager/signals.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UsersManager/migrations/0002_auto_20191125_2252.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UsersManager/migrations/0003_remove_profile_registration_date.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UsersManager/migrations/0004_auto_20191125_2304.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/default.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/js/ajax/form_updater.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DjanFinance/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/DjanFinance/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UsersManager/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/UsersManager/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DjanFinance/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/DjanFinance/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FinanceManager/templates/FinanceManager/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/FinanceManager/templates/FinanceManager/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FinanceManager/templates/FinanceManager/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/FinanceManager/templates/FinanceManager/profile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FinanceManager/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/FinanceManager/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UsersManager/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/UsersManager/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UsersManager/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/UsersManager/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UsersManager/templates/UsersManager/settings.html" beforeDir="false" afterPath="$PROJECT_DIR$/UsersManager/templates/UsersManager/settings.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UsersManager/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/UsersManager/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UsersManager/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/UsersManager/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/sidebar.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/sidebar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/statics/js/ajax/page-loader.js" beforeDir="false" afterPath="$PROJECT_DIR$/statics/js/ajax/page-loader.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/sidebar.html" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -26,8 +39,8 @@
       <list>
         <option value="CSS File" />
         <option value="HTML File" />
-        <option value="JavaScript File" />
         <option value="Python Script" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -44,17 +57,17 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\nickb\PycharmProjects\DjanFinance\statics\css\font-awesome" />
-      <recent name="C:\Users\nickb\PycharmProjects\DjanFinance\UsersManager\statics\css" />
-      <recent name="C:\Users\nickb\PycharmProjects\DjanFinance\UsersManager\statics\js" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\nickb\PycharmProjects\DjanFinance\FinanceManager\templates\FinanceManager" />
       <recent name="C:\Users\nickb\PycharmProjects\DjanFinance\media" />
       <recent name="C:\Users\nickb\PycharmProjects\DjanFinance\statics" />
       <recent name="C:\Users\nickb\PycharmProjects\DjanFinance\statics\favicon" />
       <recent name="C:\Users\nickb\PycharmProjects\DjanFinance\statics\css" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\nickb\PycharmProjects\DjanFinance\statics\css\font-awesome" />
+      <recent name="C:\Users\nickb\PycharmProjects\DjanFinance\UsersManager\statics\css" />
+      <recent name="C:\Users\nickb\PycharmProjects\DjanFinance\UsersManager\statics\js" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -73,7 +86,7 @@
     <configuration name="base.html" type="JavascriptDebugType" nameIsGenerated="true" uri="http://localhost:63342/DjanFinance/templates/base.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
-    <configuration name="logout.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/DjanFinance/UsersManager/templates/UsersManager/logout.html" useBuiltInWebServerPort="true">
+    <configuration name="logout.html" type="JavascriptDebugType" nameIsGenerated="true" uri="http://localhost:63342/DjanFinance/UsersManager/templates/UsersManager/logout.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
     <configuration name="DjanFinance" type="Python.DjangoServer" factoryName="Django server">
@@ -100,11 +113,6 @@
       <option name="customRunCommand" value="" />
       <method v="2" />
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="JavaScript Debug.logout.html" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="ServiceViewManager">
     <option name="showServicesTree" value="false" />
@@ -145,7 +153,16 @@
       <workItem from="1574613349495" duration="679000" />
       <workItem from="1574616956426" duration="115000" />
       <workItem from="1574617106520" duration="96000" />
-      <workItem from="1574617225837" duration="2161000" />
+      <workItem from="1574617225837" duration="6182000" />
+      <workItem from="1574666649449" duration="39000" />
+      <workItem from="1574666705482" duration="2287000" />
+      <workItem from="1574713766812" duration="3729000" />
+      <workItem from="1574786721456" duration="22139000" />
+      <workItem from="1574839373673" duration="2865000" />
+      <workItem from="1574856105583" duration="652000" />
+      <workItem from="1574885277695" duration="10349000" />
+      <workItem from="1574973868088" duration="8008000" />
+      <workItem from="1575011840059" duration="32247000" />
     </task>
     <task id="LOCAL-00001" summary="add new type of chart">
       <created>1573976603209</created>
@@ -245,7 +262,14 @@
       <option name="project" value="LOCAL" />
       <updated>1574617696540</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="added automatic profile creation with user registration">
+      <created>1574619499504</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1574619499504</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -285,6 +309,7 @@
     <MESSAGE value="i definitely added something useful, but i dont remember what" />
     <MESSAGE value="created templates for pages&#10;added ajax functionality" />
     <MESSAGE value="installed Pillow&#10;(and some other stuff)" />
-    <option name="LAST_COMMIT_MESSAGE" value="installed Pillow&#10;(and some other stuff)" />
+    <MESSAGE value="added automatic profile creation with user registration" />
+    <option name="LAST_COMMIT_MESSAGE" value="added automatic profile creation with user registration" />
   </component>
 </project>

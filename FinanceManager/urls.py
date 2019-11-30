@@ -10,7 +10,6 @@ urlpatterns = [
     path('income/', income, name='income-page'),
     path('expenses/', expenses, name='expenses-page'),
     path('history/', history, name='history-page'),
-    path('profile/', profile, name='profile-page'),
-
+    path('profile/', profile, name='profile-page')
 
 ]

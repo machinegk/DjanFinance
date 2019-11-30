@@ -41,8 +41,6 @@ INSTALLED_APPS = [
     'FinanceManager.apps.FinancemanagerConfig',
     'octicons',
 
-
-
 ]
 
 MIDDLEWARE = [

@@ -1,5 +1,55 @@
 <div class="container-fluid">
+    {% load static %}
+    <div class="row">
+        <div class="col">
+            <h1>Settings
+                <hr>
+            </h1>
+        </div>
+    </div>
 
-    <h1>Settings</h1>
+    <div class="row d-flex justify-content-center">
+        <div id='messages' class="col-lg-6">
+        </div>
+    </div>
+    <div class="row d-flex justify-content-center">
+        <form id="update-form" action="{% url 'settings-page' %}" class="col-lg-6" method="POST"
+              enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group row">
+                <label for="{{ u_form.email.id_for_label }}" class="col-lg-4 col-form-label">Email</label>
+                {{ u_form.email }}
+            </div>
+            <div class="form-group row">
+                <label for="{{ u_form.first_name.id_for_label }}" class="col-lg-4 col-form-label">First Name</label>
+                {{ u_form.first_name }}
+            </div>
+            <div class="form-group row">
+                <label for="{{ u_form.last_name.id_for_label }}" class="col-lg-4 col-form-label">Last Name</label>
+                {{ u_form.last_name }}
+            </div>
+            <div class="form-group row">
+                <label for="{{ p_form.birthday.id_for_label }}" class="col-lg-4 col-form-label">Birthday</label>
+                {{ p_form.birthday }}
+                <span class="input-group-addon" id="calendar-addon">
+                        <i class="fa fa-calendar" aria-hidden="true"></i>
+                </span>
+            </div>
+            <div class="form-group row">
+                <label for="{{ p_form.country.id_for_label }}" class="col-lg-4 col-form-label">Country</label>
+                {{ p_form.country }}
+            </div>
+            <div class="form-group row">
+                <label for="{{ p_form.city.id_for_label }}" class="col-lg-4 col-form-label">City</label>
+                {{ p_form.city }}
+            </div>
+            <div class="form-group row">
+                <label for="{{ p_form.image.id_for_label }}" class="col-lg-4 col-form-label">Image</label>
+                {{ p_form.image }}
+            </div>
+            <input id='submit-btn' class="btn btn-primary" type="submit" value="Submit">
+        </form>
+    </div>
+    <script src="{% static "js/ajax/form_updater.js" %}"></script>
 
 </div>

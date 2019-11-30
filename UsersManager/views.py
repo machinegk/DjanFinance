@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect
+from django.http import JsonResponse
 from django.contrib import messages
-from .forms import RegistrationForm
-from django.http import HttpResponse
+from .forms import RegistrationForm, UpdateProfileForm, UpdateUserForm
 from django.contrib.auth.decorators import user_passes_test, login_required
-
+from datetime import datetime
 
 def user_is_not_logged_in(user):
     return not user.is_authenticated
@@ -11,7 +11,32 @@ def user_is_not_logged_in(user):
 
 @login_required()
 def settings(request):
-    return render(request, 'UsersManager/settings.html')
+    if request.method == 'POST':
+        u_form = UpdateUserForm(request.POST, instance=request.user)
+        p_form = UpdateProfileForm(request.POST,
+                                   request.FILES,
+                                   instance=request.user.profile)
+        if u_form.is_valid() and p_form.is_valid():
+            u_form.save()
+            p_form.save()
+            timestamp = datetime.now().strftime('%H:%M:%S')
+            data = {
+                'success' : "Your account was updated successfully!",
+                'error' : "Error occurred, check your data, please.",
+                'timestamp' : timestamp
+            }
+            return JsonResponse(data)
+
+
+    else:
+        u_form = UpdateUserForm(instance=request.user)
+        p_form = UpdateProfileForm(instance=request.user.profile)
+
+    context = {
+        'u_form': u_form,
+        'p_form': p_form,
+    }
+    return render(request, 'UsersManager/settings.html', context)
 
 
 @user_passes_test(user_is_not_logged_in, redirect_field_name='home-page')

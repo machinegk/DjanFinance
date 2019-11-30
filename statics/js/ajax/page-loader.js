@@ -3,7 +3,6 @@ $("a.menu-link").each(function () {
     $(this).click((e) => {
         e.preventDefault();
         let page_url = $(this).attr('href');
-        console.log(page_url)
 
         $.ajax({
             url: page_url,

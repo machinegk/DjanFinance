@@ -1,5 +1,53 @@
 <div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <h1>Profile
+                <hr>
+            </h1>
+        </div>
+    </div>
 
-    <h1>Profile</h1>
+    <div class="row d-flex justify-content-center">
+        <div class="col-lg-3"><img class="img-fluid img-thumbnail" src="{{ user.profile.image.url }}" alt="">
+            <h1>Information</h1>
+            <table class="table table-hover table-striped">
+                <tbody>
+                    <tr>
+                        <th scope="row">Username</th>
+                        <td>{{ user.username }}</td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">Name and Surname</th>
+                        <td>{{ user.first_name }} {{ user.last_name }}</td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">Birthday</th>
+                        <td>{{ user.profile.birthday }}</td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">Country</th>
+                        <td>{{ user.profile.country }}</td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">City</th>
+                        <td>{{ user.profile.city }}</td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">Joined</th>
+                        <td>{{ user.date_joined }}</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+
+
+    </div>
 
 </div>
