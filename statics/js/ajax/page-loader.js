@@ -9,7 +9,6 @@ $("a.menu-link").each(function () {
             type:"GET",
             async: true,
             success: (data) => {
-                console.log(data)
                 $('#page-content').empty();
                 $('#page-content').append($(data).filter("div").html())
             }

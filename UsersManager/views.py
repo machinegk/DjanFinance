@@ -21,9 +21,15 @@ def settings(request):
             p_form.save()
             timestamp = datetime.now().strftime('%H:%M:%S')
             data = {
-                'success' : "Your account was updated successfully!",
-                'error' : "Error occurred, check your data, please.",
+                'result' : "Your account was updated successfully!",
                 'timestamp' : timestamp
+            }
+            return JsonResponse(data)
+        else:
+            timestamp = datetime.now().strftime('%H:%M:%S')
+            data = {
+                'result' : "Error occurred, check your data, please.",
+                'timestamp': timestamp
             }
             return JsonResponse(data)
 

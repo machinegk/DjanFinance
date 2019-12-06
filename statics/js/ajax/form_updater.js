@@ -2,9 +2,7 @@ function formUpdater() {
     $("#update-form").submit(function (event) {
         event.preventDefault();
         let formData = new FormData(this);
-        $('html,body').animate({
-        scrollTop: $("#messages").offset().top},
-        'slow');
+        $('html,body').animate({scrollTop: 0}, 'slow');
         $.ajax(
             {
                 type: "POST",
@@ -12,14 +10,15 @@ function formUpdater() {
                 url: $("#update-form").attr('action'),
                 data: formData,
                 dataType: 'json',
-                success: (data) => {
-                    $('#messages').empty();
-                    $("#messages").append("<div class=\"alert alert-success\" role=\"alert\">" + data['success'] + "<div style='text-align: right'>[" + data['timestamp']+ "]</div>" + "</div>")
-                },
-                error: (data) => {
-                    $('#messages').empty();
-                    $("#messages").append("<div class=\"alert alert-danger\" role=\"alert\">" + data['error'] + "<div style='text-align: right'>[" + data['timestamp']+ "]</div>" + "</div>")
-                },
+                // success: (data) => {
+                //     $('#messages').empty();
+                //     $("#messages").append("<div class=\"alert alert-info\" role=\"alert\">" + data['result'] + "<div style='text-align: right'>[" + data['timestamp'] + "]</div>" + "</div>")
+                //
+                // },
+                // error: () => {
+                //     $('#messages').empty();
+                //     $("#messages").append("<div class=\"alert alert-danger\" role=\"alert\">" + "Transferring error occurred" + "<div style='text-align: right'>[" + data['timestamp'] + "]</div>" + "</div>")
+                // },
                 cache: false,
                 contentType: false,
                 processData: false,
