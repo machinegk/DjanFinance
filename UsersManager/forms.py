@@ -3,7 +3,11 @@ from django.contrib.auth import views
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, UserChangeForm
 from .models import Profile
+from django.forms.widgets import ClearableFileInput
 
+
+class CustomClearableFileInput(ClearableFileInput):
+    template_name = "UsersManager/picture_uploader.html"
 
 class UpdateUserForm(forms.ModelForm):
     email = forms.EmailField(required=True, widget=forms.EmailInput(attrs={'class': 'form-control col-lg-8'}))
@@ -33,8 +37,9 @@ class UpdateProfileForm(forms.ModelForm):
         ]
         widgets = {
             'country': forms.TextInput(attrs={'class': 'form-control', 'id': 'country_selector'}),
-            'birthday': forms.TextInput(attrs={'class': 'form-control col-lg-8', 'id': 'datepicker', 'aria-describedby': 'calendar-addon'}),
+            'birthday': forms.TextInput(attrs={'class': 'form-control', 'id': 'datepicker', 'aria-describedby': 'calendar-addon'}),
             'city': forms.TextInput(attrs={'class': 'form-control col-lg-8'}),
+            'image' : CustomClearableFileInput,
         }
 
 

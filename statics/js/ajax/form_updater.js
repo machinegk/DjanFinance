@@ -10,15 +10,19 @@ function formUpdater() {
                 url: $("#update-form").attr('action'),
                 data: formData,
                 dataType: 'json',
-                // success: (data) => {
-                //     $('#messages').empty();
-                //     $("#messages").append("<div class=\"alert alert-info\" role=\"alert\">" + data['result'] + "<div style='text-align: right'>[" + data['timestamp'] + "]</div>" + "</div>")
-                //
-                // },
-                // error: () => {
-                //     $('#messages').empty();
-                //     $("#messages").append("<div class=\"alert alert-danger\" role=\"alert\">" + "Transferring error occurred" + "<div style='text-align: right'>[" + data['timestamp'] + "]</div>" + "</div>")
-                // },
+                success: (data) => {
+                    $('#messages').empty();
+                    if (data['success']) {
+                        $("#messages").append("<div class=\"alert alert-success\" role=\"alert\">" + data['success'] + "<div style='text-align: right'>[" + data['timestamp'] + "]</div>" + "</div>")
+                    } else if (data['error']) {
+                        $("#messages").append("<div class=\"alert alert-danger\" role=\"alert\">" + data['error'] + "<div style='text-align: right'>[" + data['timestamp'] + "]</div>" + "</div>")
+
+                    }
+                },
+                error: () => {
+                    $('#messages').empty();
+                    $("#messages").append("<div class=\"alert alert-danger\" role=\"alert\">" + "Transferring error occurred" + "<div style='text-align: right'>[" + data['timestamp'] + "]</div>" + "</div>")
+                },
                 cache: false,
                 contentType: false,
                 processData: false,
@@ -45,6 +49,6 @@ $(document).ready(function () {
     $("#country_selector").countrySelect();
 
 })
-// $(document).ajaxStop(function () {
-//     formUpdater()
-// })
+$(document).ajaxStop(function () {
+    formUpdater()
+})

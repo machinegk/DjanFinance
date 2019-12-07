@@ -15,6 +15,7 @@
         <link rel="stylesheet" href="{% static "country-select/css/countrySelect.min.css" %}">
         <script src="{% static "country-select/js/countrySelect.min.js" %}"></script>
 
+
     </head>
 {% endblock %}
 {% block content %}
@@ -37,7 +38,7 @@
                     <div class="user-pic">
                         <img class="img-responsive img-rounded"
                              src="{{ user.profile.image.url }}"
-                             alt="User picture">
+                             alt="User picture" style="width: 55px; height: 55px">
                     </div>
                     <div class="user-info">
           <span class="user-name">{{ user.first_name }}

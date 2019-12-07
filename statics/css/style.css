@@ -72,13 +72,3 @@
     animation-fill-mode: forwards;
     animation-duration: 1s;
 }
-
-.blink {
-    animation: blinker 2.5s linear infinite;
-}
-
-@keyframes blinker {
-    50% {
-        opacity: 60%;
-    }
-}

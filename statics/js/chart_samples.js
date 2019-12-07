@@ -62,15 +62,10 @@ new Chart(document.getElementById("chartjs-4"),
 
 new Chart(document.getElementById("chartjs-0"),{"type":"line",
     "data":{"labels":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
-        "datasets":[{"label":"Card",
+        "datasets":[{"label":"Daily",
             "data":[20,30,50, 150, 30, 25,150],
             "fill":false,
             "borderColor":"rgb(75, 192, 192)",
-            "lineTension":0.1},
-            {"label":"Cash",
-            "data":[455, 300, 500, 100, 200],
-            "fill":false,
-            "borderColor":"rgb(119,192,71)",
             "lineTension":0.1}
             ]},
     "options":{ legend: { labels: { fontSize: 20 } }}});

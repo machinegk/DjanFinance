@@ -1,5 +1,23 @@
 <div class="container-fluid">
     {% load static %}
+    <style>button {
+        width: 150px;
+        display: block;
+        padding: 12px 24px;
+        background: rgb(220, 220, 220);
+        font-weight: bold;
+        color: rgb(120, 120, 120);
+        border: none;
+        outline: none;
+        border-radius: 3px;
+        cursor: pointer;
+        transition: ease .3s;
+    }
+
+    button:hover {
+        background: rebeccapurple;
+        color: #ffffff;
+    }</style>
     <div class="row">
         <div class="col">
             <h1>Settings
@@ -30,10 +48,14 @@
             </div>
             <div class="form-group row">
                 <label for="{{ p_form.birthday.id_for_label }}" class="col-lg-4 col-form-label">Birthday</label>
-                {{ p_form.birthday }}
-                <span class="input-group-addon" id="calendar-addon">
-                        <i class="fa fa-calendar" aria-hidden="true"></i>
-                </span>
+                <div class="input-group col-lg-8" style="padding: 0px">
+                    {{ p_form.birthday }}
+                    <div class="input-group-append">
+                    <span class="input-group-text" id="calendar-addon">
+                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                </div>
             </div>
             <div class="form-group row">
                 <label for="{{ p_form.country.id_for_label }}" class="col-lg-4 col-form-label">Country</label>
@@ -47,7 +69,9 @@
                 <label for="{{ p_form.image.id_for_label }}" class="col-lg-4 col-form-label">Image</label>
                 {{ p_form.image }}
             </div>
-            <input id='submit-btn' class="btn btn-primary" type="submit" value="Submit">
+
+                <button type="submit" class="mx-lg-0 mx-auto">Update Profile</button>
+
         </form>
     </div>
     <script src="{% static "js/ajax/form_updater.js" %}"></script>
