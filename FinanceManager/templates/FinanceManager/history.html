@@ -1,5 +1,98 @@
+{% load static %}
 <div class="container-fluid">
 
-    <h1>History</h1>
+    <div class="row">
+        <div class="col">
+            <h1>History
+                <hr>
+            </h1>
+        </div>
+    </div>
 
+    <div class="row d-flex justify-content-center">
+        <div class="table-responsive col-lg-10" id='table-reload'>
+            <table class="table table-striped table-dark rounded">
+                <thead>
+                <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Category</th>
+                    <th scope="col"><i class="fas fa-edit"></i></th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for record in records %}
+                    <tr>
+                        <th scope="row">{{ record.date_time }}</th>
+                        <td>{{ record.amount }}</td>
+                        <td>{{ record.type }}</td>
+                        <td>{{ record.category.category_name }}</td>
+                        <td>
+                            <button class="editor" data-toggle="modal" data-target="#EditRecordModal"
+                                    style="background-color: Transparent;background-repeat:no-repeat;border: none;cursor:pointer;overflow: hidden;outline:none; color: white">{{ record.category.category_icon | safe | cut:"fa-7x" }}</button>
+                        </td>
+                        <td style="display:none;"> {{ record.id }}</td>
+                    </tr>
+
+                {% endfor %}
+                </tbody>
+            </table>
+        <script>
+            $(
+                function editor() {
+                    $('.editor').on('click', function () {
+                        let record_id = $(this).parent().next().text();
+                        let amount = $(this).parent().prev().prev().prev().text();
+                        let type = $(this).parent().prev().prev().text();
+                        let category = $(this).parent().prev().text();
+                        $('#type').text(type)
+                        $('#record_type').val(type)
+                        $('#category').text(category)
+                        $('#record_category').val(category)
+                        $('#record_id').val(record_id);
+                        $('#new_value').val(parseInt(amount));
+                    });
+                }
+            )
+        </script>
+        </div>
+        <div class="modal fade" id="EditRecordModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Edit Record</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <h1><span class="badge badge-info" id="type"></span>
+                            <span class="badge badge-secondary" id="category"></span></h1>
+                        <form action="{% url 'history-page' %}" method="POST">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <input type="hidden" id="record_id" name="record_id"
+                                       class="record_id" value="">
+                                <input type="hidden" id="record_type" name="record_type"
+                                       class="record_type" value="">
+                                <input type="number" placeholder="Enter the Amount" class="form-control"
+                                       id="new_value" name="new_value">
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-danger" name="delete_record">Delete
+                                        Record
+                                    </button>
+                                    <button type="submit" class="btn btn-primary" name="change_record">Save</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <script src="{% static 'js/history/history_manager.js' %}"></script>
 </div>

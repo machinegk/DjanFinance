@@ -52,7 +52,7 @@ new Chart(document.getElementById("chartjs-4"),
     "options":{ legend: { labels: { fontSize: 20 } },
                 elements: {
 				    center: {
-				        text: '1255$',
+				        text: '1255',
                         color: '#9cadff', // Default is #000000
                         fontStyle: 'Arial', // Default is Arial
                         sidePadding: 20 // Default is 20 (as a percentage)

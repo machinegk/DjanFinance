@@ -17,18 +17,18 @@ def save_budget(sender, instance, created, **kwargs):
 def create_default_categories(sender, instance, created, **kwargs):
     if created:
         IncomeCategory.objects.bulk_create([
-            IncomeCategory(budget=instance, income_category_name='Salary'),
-            IncomeCategory(budget=instance, income_category_name='Deposit'),
-            IncomeCategory(budget=instance, income_category_name='Saving'),
+            IncomeCategory(budget=instance, category_name='Salary', category_icon='<i class="fas fa-money-bill-alt fa-7x"></i>'),
+            IncomeCategory(budget=instance, category_name='Deposit', category_icon='<i class="fas fa-university fa-7x"></i>'),
+            IncomeCategory(budget=instance, category_name='Saving', category_icon='<i class="fas fa-piggy-bank fa-7x"></i>'),
         ])
         ExpenseCategory.objects.bulk_create([
-            ExpenseCategory(budget=instance, expense_category_name='Bills'),
-            ExpenseCategory(budget=instance, expense_category_name='House'),
-            ExpenseCategory(budget=instance, expense_category_name='Pets'),
-            ExpenseCategory(budget=instance, expense_category_name='Health'),
-            ExpenseCategory(budget=instance, expense_category_name='Entertainment'),
-            ExpenseCategory(budget=instance, expense_category_name='Food'),
-            ExpenseCategory(budget=instance, expense_category_name='Car'),
+            ExpenseCategory(budget=instance, category_name='Bills', category_icon='<i class="fas fa-file-invoice-dollar fa-7x"></i>'),
+            ExpenseCategory(budget=instance, category_name='House', category_icon='<i class="fas fa-home fa-7x"></i>'),
+            ExpenseCategory(budget=instance, category_name='Pets', category_icon='<i class="fas fa-paw fa-7x"></i>'),
+            ExpenseCategory(budget=instance, category_name='Health', category_icon='<i class="fas fa-heartbeat fa-7x"></i>'),
+            ExpenseCategory(budget=instance, category_name='Entertainment', category_icon='<i class="fas fa-futbol fa-7x"></i>'),
+            ExpenseCategory(budget=instance, category_name='Food', category_icon='<i class="fas fa-hamburger fa-7x"></i>'),
+            ExpenseCategory(budget=instance, category_name='Car', category_icon='<i class="fas fa-car fa-7x"></i>'),
         ])
 
 

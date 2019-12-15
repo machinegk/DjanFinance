@@ -1,5 +1,103 @@
+{% load static %}
 <div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <h1>Income
+                <hr>
+            </h1>
+        </div>
+    </div>
 
-    <h1>Income</h1>
+
+    <div class="row d-flex justify-content-center" id="income-page-main">
+        {% for category in user.budget.incomecategory_set.all %}
+            <div class="card m-3 p-3 col-lg-3">
+                <div class="card-body text-center">
+                    <h1 class="card-title text-truncate">{{ category.category_name }}</h1>
+                    <hr>
+                    <button class="category_changer" data-toggle="modal" data-target="#ChangeCategoryModal"
+                            style="background-color: Transparent;background-repeat:no-repeat;border: none;cursor:pointer;overflow: hidden;outline:none;">
+                        {{ category.category_icon | safe }}</button>
+                </div>
+            </div>
+        {% endfor %}
+        <div class="card m-3 p-3 col-lg-3">
+            <div class="card-body text-center">
+                <h1 class="card-title text-truncate">Add New</h1>
+                <hr>
+                <button data-toggle="modal" data-target="#AddCategoryModal"
+                        style="background-color: Transparent;background-repeat:no-repeat;border: none;cursor:pointer;overflow: hidden;outline:none;">
+                    <i class="fas fa-plus fa-7x"></i></button>
+            </div>
+        </div>
+        <script>
+            $(function () {
+
+                $('.category_changer').on('click', function () {
+                    let category_name = $(this).prev().prev().text();
+                    $('#current_category_name').val(category_name);
+                })
+
+            })
+        </script>
+
+
+    </div>
+    <div class="modal fade" id="ChangeCategoryModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Change Category</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="{% url 'income-page' %}" method="POST">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <input type="hidden" id="current_category_name" name="current_category_name" value="">
+                            <input type="text" placeholder="New Category Name" class="form-control "
+                                   id="new_category_name" name="new_category_name">
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-danger" name="delete_category">Delete
+                                    Category
+                                </button>
+                                <button type="submit" class="btn btn-primary" name="change_category">Save</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="AddCategoryModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add New Category</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="{% url 'income-page' %}" method="POST">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <input type="text" placeholder="Category Name" class="form-control " id="category_name"
+                                   name="category_name">
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary" name="add_category">Add category
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{% static "js/category_manager/income_manager.js" %}"></script>
 
 </div>

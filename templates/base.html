@@ -38,11 +38,7 @@
         <ul class="navbar-nav ml-auto">
             {% if user.is_authenticated %}
                 <li class="nav-item"><a href="{% url 'home-page' %}" class="nav-link">{% octicon "home" %}Home
-                    of [<span class="blink">{{ user.username }}</span>]</a></li>
-                <li class="nav-item"><a href="{% url 'profile-page' %}"
-                                        class="nav-link">{% octicon "person" %}Profile</a></li>
-                <li class="nav-item"><a href="{% url 'settings-page' %}" class="nav-link">{% octicon "settings" %}Settings</a>
-                </li>
+                    of [{{ user.username }}]</a></li>
                 <li class="nav-item"><a href="{% url 'logout-page' %}" class="nav-link">{% octicon "sign-out" %}Log
                     out</a></li>
             {% else %}
@@ -72,7 +68,7 @@
 
             <div class="col-lg-8 col-sm-12">
                 <div class="row">
-                    <canvas id="chartjs-4" class="chartjs col-lg-10 col-lg-10 order-lg-2" width="1200" height="800"
+                    <canvas id="chartjs-4" class="chartjs col-lg-10 order-lg-2" width="1200" height="800"
                             style="display: block; height: 358px; width: 717px;"></canvas>
                     <div class="alert alert-info col-lg-2 order-lg-1 align-self-lg-center" role="alert">
                         Watch your expenses in beautiful diagrams, powered by Charts.js!

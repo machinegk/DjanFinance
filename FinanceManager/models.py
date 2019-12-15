@@ -11,27 +11,37 @@ class Budget(models.Model):
 
 class IncomeCategory(models.Model):
     budget = models.ForeignKey(Budget, on_delete=models.CASCADE)
-    income_category_name = models.CharField(max_length=120)
+    category_name = models.CharField(max_length=120)
+    category_icon = models.CharField(max_length=50, default='<i class="fas fa-dollar-sign fa-7x"></i>')
 
     def __str__(self):
-        return self.budget.user.username + " - Category: " + self.income_category_name
+        return self.budget.user.username + " - Category: " + self.category_name
 
 class ExpenseCategory(models.Model):
     budget = models.ForeignKey(Budget, on_delete=models.CASCADE)
-    expense_category_name = models.CharField(max_length=120)
+    category_name = models.CharField(max_length=120)
+    category_icon = models.CharField(max_length=50, default='<i class="fas fa-dollar-sign fa-7x"></i>')
 
     def __str__(self):
-        return self.budget.user.username + " - Category: " + self.expense_category_name
+        return self.budget.user.username + " - Category: " + self.category_name
 
 class Income(models.Model):
-    income_category = models.ForeignKey(IncomeCategory, on_delete=models.CASCADE)
-    income_amount = models.IntegerField()
+    id = models.AutoField(primary_key=True)
+    type = "Income"
+    budget = models.ForeignKey(Budget, on_delete=models.CASCADE)
+    category = models.ForeignKey(IncomeCategory, on_delete=models.CASCADE)
+    amount = models.IntegerField()
+    date_time = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.income_category.budget.user.username + " - " + str(self.income_amount) + ' - ' + self.income_category.income_category_name
+        return self.category.budget.user.username + " - " + str(self.amount) + ' - ' + self.category.category_name
 class Expense(models.Model):
-    expense_category = models.ForeignKey(ExpenseCategory, on_delete=models.CASCADE)
-    expense_amount = models.IntegerField()
+    id = models.AutoField(primary_key=True)
+    type = "Expense"
+    budget = models.ForeignKey(Budget, on_delete=models.CASCADE)
+    category = models.ForeignKey(ExpenseCategory, on_delete=models.CASCADE)
+    amount = models.IntegerField()
+    date_time = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.expense_category.budget.user.username + " - " + str(self.expense_amount) + ' - ' + self.expense_category.expense_category_name
+        return self.category.budget.user.username + " - " + str(self.amount) + ' - ' + self.category.category_name

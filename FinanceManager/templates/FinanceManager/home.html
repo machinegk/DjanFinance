@@ -15,7 +15,6 @@
         <link rel="stylesheet" href="{% static "country-select/css/countrySelect.min.css" %}">
         <script src="{% static "country-select/js/countrySelect.min.js" %}"></script>
 
-
     </head>
 {% endblock %}
 {% block content %}
@@ -52,6 +51,12 @@
                         <li class="header-menu">
                             <span>General</span>
                         </li>
+                        <li>
+                            <a class="menu-link" href="{% url 'start-page' %}" id="start">
+                                <i class="fas fa-play"></i>
+                                <span>Start</span>
+                            </a>
+                        </li>
                         <li class="sidebar-dropdown">
                             <a href="#">
                                 <i class="fas fa-chart-bar"></i>
@@ -62,10 +67,6 @@
                                     <li>
                                         <a class="menu-link" href="{% url 'daily-page' %}">Daily<i
                                                 class="fas fa-wallet"></i></a>
-                                    </li>
-                                    <li>
-                                        <a class="menu-link" href="{% url 'cash-and-card' %}">Cash&Card<i
-                                                class="fas fa-credit-card"></i></a>
                                     </li>
                                     <li>
                                         <a class="menu-link" href="{% url 'general-statistics-page' %}">General
@@ -123,19 +124,20 @@
 
                     </ul>
                 </div>
-                <!-- sidebar-menu  -->
             </div>
-            <!-- sidebar-content  -->
 
 
         </nav>
-        <!-- sidebar-wrapper  -->
         <main class="page-content" id="page-content">
-            Start
-
         </main>
-        <!-- page-content" -->
     </div>
+    <script>
+        $(
+            function () {
+                $("#start").trigger('click');
+            }
+        )
+    </script>
     </body>
 
 
