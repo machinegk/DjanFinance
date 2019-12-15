@@ -1,12 +1,11 @@
 from django.shortcuts import render, get_object_or_404
-from django.db.models import Q
 from django.contrib.auth.decorators import login_required
-from django.views.decorators.csrf import csrf_exempt
 from .forms import IncomeCategoryForm, ChangeIncomeCategoryForm, DeleteIncomeCategoryForm, ExpenseCategoryForm, \
     ChangeExpenseCategoryForm, DeleteExpenseCategoryForm, DeleteRecord, ChangeRecord
 from .models import IncomeCategory, ExpenseCategory, Budget, Income, Expense
 from itertools import chain
 from datetime import datetime, timedelta
+import random
 
 
 @login_required()
@@ -50,7 +49,6 @@ def history(request):
             'records': records
         }
         return render(request, 'FinanceManager/history.html', context)
-
 
     return render(request, 'FinanceManager/history.html', context)
 
@@ -140,12 +138,56 @@ def home(request):
 def profile(request):
     return render(request, 'FinanceManager/profile.html')
 
+
+def random_color():
+    r = random.randint(0, 255)
+    g = random.randint(0, 255)
+    b = random.randint(0, 255)
+    rgb = [r, g, b]
+    return ("rgb" + str(tuple(rgb)))
+
 @login_required()
 def start(request):
-    expense_set = request.user.budget.expense_set.filter(date_time__gte=datetime.now()-timedelta(days=7)).order_by('category__category_name')
-    categories = expense_set.values_list('category__category_name', flat=True).distinct()
-    for category in categories:
+    expense_set = request.user.budget.expense_set.filter(date_time__gte=datetime.now() - timedelta(days=7)).order_by(
+        'category__category_name')
+    expense_categories = expense_set.values_list('category__category_name', flat=True).distinct()
+    income_set = request.user.budget.income_set.filter(date_time__gte=datetime.now() - timedelta(days=7)).order_by(
+        'category__category_name')
+    income_categories = income_set.values_list('category__category_name', flat=True).distinct()
+
+    labels1 = []
+    data1 = []
+    backgroundcolor1 = []
+
+    labels2 = []
+    data2 = []
+    backgroundcolor2 = []
+
+    for category in expense_categories:
         values = expense_set.filter(category__category_name=category).values_list('amount', flat=True)
+        expense_sum = sum(values)
+        labels1.append(category)
+        data1.append(expense_sum)
+        backgroundcolor1.append(random_color())
+        all_sum1 = sum(data1)
 
+    for category in income_categories:
+        values = income_set.filter(category__category_name=category).values_list('amount', flat=True)
+        income_sum = sum(values)
+        labels2.append(category)
+        data2.append(income_sum)
+        backgroundcolor2.append(random_color())
+        all_sum2 = sum(data2)
 
-    return render(request, 'FinanceManager/start.html')
+    context = {
+        "labels1": labels1,
+        "data1": data1,
+        "backgroundColor1": backgroundcolor1,
+        "all_sum1": all_sum1,
+        "labels2": labels2,
+        "data2": data2,
+        "backgroundColor2": backgroundcolor2,
+        "all_sum2": all_sum2
+    }
+
+    return render(request, 'FinanceManager/start.html', context)

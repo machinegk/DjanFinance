@@ -11,12 +11,75 @@
 
 
     <div class="row d-flex justify-content-center">
-        <script src="{% static 'js/start/start_manager.js' %}"></script>
-        <div class="col-lg-10 d-flex justify-content-center">
-            <canvas id="center-chart" class="chartjs col-lg-5" width="1600" height="1600" ></canvas>
-        </div>
+        <script>
+            labels1 = {{ labels1 | safe }};
+            data1 = {{ data1 | safe}};
+            backgroundColor1 = {{ backgroundColor1 | safe}};
+            sum1 = {{ all_sum1 | safe }};
 
+            labels2 = {{ labels2 | safe }};
+            data2 = {{ data2 | safe}};
+            backgroundColor2 = {{ backgroundColor2 | safe}};
+            sum2 = {{ all_sum2 | safe }}
+
+            $("#expense_button").on('click', function (event) {
+                $("#AddExpense").show('slide')
+            })
+            $("#income_button").on('click', function (event) {
+                $("#AddIncome").show('slide', {direction: "right"})
+            })
+        </script>
+
+        <div class="row d-flex justify-content-center">
+            <button class="col-6" data-toggle="modal" data-target="#AddExpense" id="expense_button"
+                            style="color: red; background-color: Transparent;background-repeat:no-repeat;border: none;cursor:pointer;overflow: hidden;outline:none;"><i class="fas fa-minus-circle fa-5x"></i></button>
+            <button class="col-6" data-toggle="modal" data-target="#AddIncome"  id="income_button"
+                            style="color: green; background-color: Transparent;background-repeat:no-repeat;border: none;cursor:pointer;overflow: hidden;outline:none;"><i class="fas fa-plus-circle fa-5x"></i></button>
+            <canvas id="expense-chart" class="chartjs col-lg-6 col-sm-12" style="height: 450px; width: 450px;" ></canvas>
+            <canvas id="income-chart" class="chartjs col-lg-6 col-sm-12" style="height: 450px; width: 450px;" ></canvas>
+        </div>
+        <script src="{% static 'js/start/start_manager.js' %}"></script>
     </div>
+
+    <div class="modal fade" id="AddExpense" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add Expense</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="AddIncome" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add Income</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
 
 
 </div>
