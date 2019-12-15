@@ -6,6 +6,7 @@ from .forms import IncomeCategoryForm, ChangeIncomeCategoryForm, DeleteIncomeCat
     ChangeExpenseCategoryForm, DeleteExpenseCategoryForm, DeleteRecord, ChangeRecord
 from .models import IncomeCategory, ExpenseCategory, Budget, Income, Expense
 from itertools import chain
+from datetime import datetime, timedelta
 
 
 @login_required()
@@ -141,4 +142,10 @@ def profile(request):
 
 @login_required()
 def start(request):
+    expense_set = request.user.budget.expense_set.filter(date_time__gte=datetime.now()-timedelta(days=7)).order_by('category__category_name')
+    categories = expense_set.values_list('category__category_name', flat=True).distinct()
+    for category in categories:
+        values = expense_set.filter(category__category_name=category).values_list('amount', flat=True)
+
+
     return render(request, 'FinanceManager/start.html')
