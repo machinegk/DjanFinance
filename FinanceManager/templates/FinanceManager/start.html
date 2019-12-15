@@ -22,9 +22,9 @@
             backgroundColor2 = {{ backgroundColor2 | safe}};
             sum2 = {{ all_sum2 | safe }}
 
-            $("#expense_button").on('click', function (event) {
-                $("#AddExpense").show('slide')
-            })
+                $("#expense_button").on('click', function (event) {
+                    $("#AddExpense").show('slide')
+                })
             $("#income_button").on('click', function (event) {
                 $("#AddIncome").show('slide', {direction: "right"})
             })
@@ -32,13 +32,15 @@
 
         <div class="row d-flex justify-content-center">
             <button class="col-6" data-toggle="modal" data-target="#AddExpense" id="expense_button"
-                            style="color: red; background-color: Transparent;background-repeat:no-repeat;border: none;cursor:pointer;overflow: hidden;outline:none;"><i class="fas fa-minus-circle fa-5x"></i></button>
-            <button class="col-6" data-toggle="modal" data-target="#AddIncome"  id="income_button"
-                            style="color: green; background-color: Transparent;background-repeat:no-repeat;border: none;cursor:pointer;overflow: hidden;outline:none;"><i class="fas fa-plus-circle fa-5x"></i></button>
-            <canvas id="expense-chart" class="chartjs col-lg-6 col-sm-12" style="height: 450px; width: 450px;" ></canvas>
-            <canvas id="income-chart" class="chartjs col-lg-6 col-sm-12" style="height: 450px; width: 450px;" ></canvas>
+                    style="color: red; background-color: Transparent;background-repeat:no-repeat;border: none;cursor:pointer;overflow: hidden;outline:none;">
+                <i class="fas fa-minus-circle fa-5x"></i></button>
+            <button class="col-6" data-toggle="modal" data-target="#AddIncome" id="income_button"
+                    style="color: green; background-color: Transparent;background-repeat:no-repeat;border: none;cursor:pointer;overflow: hidden;outline:none;">
+                <i class="fas fa-plus-circle fa-5x"></i></button>
+            <canvas id="expense-chart" class="chartjs col-lg-6 col-sm-12" style="height: 450px; width: 450px;"></canvas>
+            <canvas id="income-chart" class="chartjs col-lg-6 col-sm-12" style="height: 450px; width: 450px;"></canvas>
         </div>
-        <script src="{% static 'js/start/start_manager.js' %}"></script>
+
     </div>
 
     <div class="modal fade" id="AddExpense" tabindex="-1" role="dialog" aria-hidden="true">
@@ -51,13 +53,35 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="" method="POST">
+                    <form action="{% url 'start-page' %}" method="POST" id="expense_form">
                         {% csrf_token %}
+                        <div class="input-group mb-3">
+                            <select class="custom-select" id="expense_category" name="expense_category">
+                                {% for category in user.budget.expensecategory_set.all %}
+                                    <option value="{{ category.category_name }}">{{ category.category_name }}</option>
+                                {% endfor %}
+                            </select>
+                            <div class="input-group-append">
+                                <label class="input-group-text" for="expense_category">Category</label>
+                            </div>
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <input type="number" class="form-control" placeholder="Amount" name="amount">
+                            <div class="input-group-append">
+                                <span class="input-group-text">Amount</span>
+                            </div>
+                        </div>
+
+                        <div class="modal-footer justify-content-center">
+                            <button type="submit" class="btn btn-danger" name="add_expense">ADD</button>
+                        </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+
     <div class="modal fade" id="AddIncome" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -68,18 +92,98 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="" method="POST">
+                    <form action="{% url 'start-page' %}" method="POST" id="income_form">
                         {% csrf_token %}
+                        <div class="input-group mb-3">
+                            <select class="custom-select" id="income_category" name="income_category">
+                                {% for category in user.budget.incomecategory_set.all %}
+                                    <option value="{{ category.category_name }}">{{ category.category_name }}</option>
+                                {% endfor %}
+                            </select>
+                            <div class="input-group-append">
+                                <label class="input-group-text" for="income_category">Category</label>
+                            </div>
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <input type="number" class="form-control" placeholder="Amount" name="amount">
+                            <div class="input-group-append">
+                                <span class="input-group-text">Amount</span>
+                            </div>
+                        </div>
+
+                        <div class="modal-footer justify-content-center">
+                            <button type="submit" class="btn btn-success" name="add_income">ADD</button>
+                        </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
 
+    <script>
+Chart1 = new Chart(document.getElementById("expense-chart"),
+    {
+        "type": "doughnut",
+        "data": {
+            "labels": labels1,
+            "datasets": [{
+                "label": "Expenses",
+                "data": data1,
+                "backgroundColor":
+                backgroundColor1
+            }]
+        },
+        "options": {
+            legend: {labels: {fontSize: 20}},
+            title: {
+                display: true,
+                fontSize: 30,
+                text: "Expenses"
+            },
+            elements: {
+                center: {
+                    text: sum1,
+                    color: 'red', // Default is #000000
+                    fontStyle: 'Arial', // Default is Arial
+                    sidePadding: 20 // Default is 20 (as a percentage)
+                },
 
 
+            }
+        }
+    });
+Chart2 = new Chart(document.getElementById("income-chart"),
+    {
+        "type": "doughnut",
+        "data": {
+            "labels": labels2,
+            "datasets": [{
+                "label": "Income",
+                "data": data2,
+                "backgroundColor":
+                backgroundColor2
+            }]
+        },
+        "options": {
+            legend: {labels: {fontSize: 20}},
+            title: {
+                display: true,
+                fontSize: 30,
+                text: "Income"
+            },
+            elements: {
+                center: {
+                    text: sum2,
+                    color: 'green', // Default is #000000
+                    fontStyle: 'Arial', // Default is Arial
+                    sidePadding: 20 // Default is 20 (as a percentage)
+                },
 
 
-
-
+            }
+        }
+    });
+    </script>
+    <script src="{% static 'js/start/start_manager.js' %}"></script>
 </div>

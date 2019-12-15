@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .forms import IncomeCategoryForm, ChangeIncomeCategoryForm, DeleteIncomeCategoryForm, ExpenseCategoryForm, \
-    ChangeExpenseCategoryForm, DeleteExpenseCategoryForm, DeleteRecord, ChangeRecord
+    ChangeExpenseCategoryForm, DeleteExpenseCategoryForm, DeleteRecord, ChangeRecord, AddExpense, AddIncome
 from .models import IncomeCategory, ExpenseCategory, Budget, Income, Expense
 from itertools import chain
 from datetime import datetime, timedelta
@@ -148,6 +148,21 @@ def random_color():
 
 @login_required()
 def start(request):
+    if "add_expense" in request.POST:
+        form = AddExpense(request.POST)
+        if form.is_valid():
+            expense_category = form.cleaned_data['expense_category']
+            amount = form.cleaned_data['amount']
+            category = ExpenseCategory.objects.get(budget=request.user.budget, category_name=expense_category)
+            Expense.objects.create(budget=request.user.budget, category=category, amount=amount).save()
+    elif "add_income" in request.POST:
+        form = AddIncome(request.POST)
+        if form.is_valid():
+            income_category = form.cleaned_data['income_category']
+            amount = form.cleaned_data['amount']
+            category = IncomeCategory.objects.get(budget=request.user.budget, category_name=income_category)
+            Income.objects.create(budget=request.user.budget, category=category, amount=amount).save()
+
     expense_set = request.user.budget.expense_set.filter(date_time__gte=datetime.now() - timedelta(days=7)).order_by(
         'category__category_name')
     expense_categories = expense_set.values_list('category__category_name', flat=True).distinct()

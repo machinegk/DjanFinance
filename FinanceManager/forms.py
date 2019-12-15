@@ -1,5 +1,13 @@
 from django import forms
 
+class AddExpense(forms.Form):
+    expense_category = forms.CharField()
+    amount = forms.IntegerField()
+
+class AddIncome(forms.Form):
+    income_category = forms.CharField()
+    amount = forms.IntegerField()
+
 class IncomeCategoryForm(forms.Form):
     category_name = forms.CharField()
 
