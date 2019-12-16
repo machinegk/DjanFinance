@@ -1,3 +1,4 @@
+{% load static %}
 <div class="container-fluid">
 
     <div class="row">
@@ -6,6 +7,22 @@
                 <hr>
             </h1>
         </div>
+    </div>
+    
+    <div class="row d-flex justify-content-center">
+        <script>
+            time_list = {{ time_list | safe }}
+            expenses_list = {{ expenses_list | safe }}
+        </script>
+        <div class="col-lg-10">
+            <canvas id="daily_chart" class="chartjs"></canvas>
+
+        </div>
+
+
+        <script src="{% static 'js/daily/daily_manager.js' %}"></script>
+        
+        
     </div>
 
 

@@ -1,10 +1,11 @@
 from django.shortcuts import render, get_object_or_404
+from django.db.models import Sum
 from django.contrib.auth.decorators import login_required
 from .forms import IncomeCategoryForm, ChangeIncomeCategoryForm, DeleteIncomeCategoryForm, ExpenseCategoryForm, \
     ChangeExpenseCategoryForm, DeleteExpenseCategoryForm, DeleteRecord, ChangeRecord, AddExpense, AddIncome
 from .models import IncomeCategory, ExpenseCategory, Budget, Income, Expense
 from itertools import chain
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, date
 import random
 
 
@@ -121,12 +122,41 @@ def expenses(request):
 
 @login_required()
 def general_statistics(request):
-    return render(request, 'FinanceManager/general-statistics.html')
+    time_list = []
+    expenses_list = []
+    income_list = []
+    expense_set = request.user.budget.expense_set.filter(date_time__month=12)
+    income_set = request.user.budget.income_set.filter(date_time__month=12)
+    expenses_list.append(expense_set.aggregate(Sum('amount'))['amount__sum'])
+    income_list.append(income_set.aggregate(Sum('amount'))['amount__sum'])
+    time_list.append('December')
+    print(str(expenses_list))
+
+    context = {
+        "time_list": time_list,
+        "expenses_list": expenses_list,
+        "income_list": income_list
+    }
+
+
+    return render(request, 'FinanceManager/general-statistics.html', context)
 
 
 @login_required()
 def daily(request):
-    return render(request, 'FinanceManager/daily.html')
+    time_list = []
+    expenses_list = []
+    expense_set = request.user.budget.expense_set.filter(date_time__gte=datetime.today() - timedelta(days=7))
+    for exp in expense_set:
+        exp_time = exp.date_time.strftime("%m-%d %H:%M")
+        time_list.append(exp_time)
+        expenses_list.append(exp.amount)
+
+    context = {
+        "time_list": time_list,
+        "expenses_list": expenses_list
+    }
+    return render(request, 'FinanceManager/daily.html', context)
 
 
 @login_required()
@@ -170,29 +200,34 @@ def start(request):
         'category__category_name')
     income_categories = income_set.values_list('category__category_name', flat=True).distinct()
 
+    all_sum1 = 0
     labels1 = []
     data1 = []
     backgroundcolor1 = []
 
+    all_sum2 = 0
     labels2 = []
     data2 = []
     backgroundcolor2 = []
 
-    for category in expense_categories:
-        values = expense_set.filter(category__category_name=category).values_list('amount', flat=True)
-        expense_sum = sum(values)
-        labels1.append(category)
-        data1.append(expense_sum)
-        backgroundcolor1.append(random_color())
-        all_sum1 = sum(data1)
 
-    for category in income_categories:
-        values = income_set.filter(category__category_name=category).values_list('amount', flat=True)
-        income_sum = sum(values)
-        labels2.append(category)
-        data2.append(income_sum)
-        backgroundcolor2.append(random_color())
-        all_sum2 = sum(data2)
+    if request.user.budget.expense_set.exists() or request.user.budget.income_set.exists():
+
+        for category in expense_categories:
+            values = expense_set.filter(category__category_name=category).values_list('amount', flat=True)
+            expense_sum = sum(values)
+            labels1.append(category)
+            data1.append(expense_sum)
+            backgroundcolor1.append(random_color())
+            all_sum1 = sum(data1)
+
+        for category in income_categories:
+            values = income_set.filter(category__category_name=category).values_list('amount', flat=True)
+            income_sum = sum(values)
+            labels2.append(category)
+            data2.append(income_sum)
+            backgroundcolor2.append(random_color())
+            all_sum2 = sum(data2)
 
     context = {
         "labels1": labels1,
@@ -204,5 +239,6 @@ def start(request):
         "backgroundColor2": backgroundcolor2,
         "all_sum2": all_sum2
     }
+
 
     return render(request, 'FinanceManager/start.html', context)

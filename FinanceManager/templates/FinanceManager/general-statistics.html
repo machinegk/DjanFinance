@@ -1,3 +1,4 @@
+{% load static %}
 <div class="container-fluid">
 
     <div class="row">
@@ -7,6 +8,20 @@
             </h1>
         </div>
     </div>
+
+     <div class="row d-flex justify-content-center">
+        <script>
+            time_list = {{ time_list | safe }}
+            expenses_list = {{ expenses_list | safe }}
+            income_list = {{ income_list | safe }}
+        </script>
+        <div class="col-lg-10">
+            <canvas id="general_chart" class="chartjs"></canvas>
+
+        </div>
+
+
+        <script src="{% static 'js/general/general_manager.js' %}"></script>
 
 
 

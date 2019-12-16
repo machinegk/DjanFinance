@@ -2,11 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5a596d89-bc52-47a1-8f3f-be1c7d98ec10" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/statics/js/daily/daily_manager.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/js/general/general_manager.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FinanceManager/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/FinanceManager/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FinanceManager/templates/FinanceManager/start.html" beforeDir="false" afterPath="$PROJECT_DIR$/FinanceManager/templates/FinanceManager/start.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FinanceManager/templates/FinanceManager/daily.html" beforeDir="false" afterPath="$PROJECT_DIR$/FinanceManager/templates/FinanceManager/daily.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FinanceManager/templates/FinanceManager/general-statistics.html" beforeDir="false" afterPath="$PROJECT_DIR$/FinanceManager/templates/FinanceManager/general-statistics.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FinanceManager/templates/FinanceManager/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/FinanceManager/templates/FinanceManager/home.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FinanceManager/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/FinanceManager/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/statics/js/start/start_manager.js" beforeDir="false" afterPath="$PROJECT_DIR$/statics/js/start/start_manager.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -171,7 +173,8 @@
       <workItem from="1576216621081" duration="35637000" />
       <workItem from="1576321334008" duration="21512000" />
       <workItem from="1576355504133" duration="13299000" />
-      <workItem from="1576403633227" duration="35322000" />
+      <workItem from="1576403633227" duration="42511000" />
+      <workItem from="1576475566476" duration="15385000" />
     </task>
     <task id="LOCAL-00001" summary="add new type of chart">
       <created>1573976603209</created>
@@ -320,7 +323,14 @@
       <option name="project" value="LOCAL" />
       <updated>1576436448072</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="main page - done">
+      <created>1576444855307</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1576444855307</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -367,6 +377,18 @@
     <MESSAGE value="a lot of different stuff done" />
     <MESSAGE value="added opportunity to load records" />
     <MESSAGE value="programed start page (not at all)" />
-    <option name="LAST_COMMIT_MESSAGE" value="programed start page (not at all)" />
+    <MESSAGE value="main page - done" />
+    <option name="LAST_COMMIT_MESSAGE" value="main page - done" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/DjanFinance/urls.py</url>
+          <line>15</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
